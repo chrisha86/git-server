@@ -1,5 +1,5 @@
 #!/bin/sh
-# 根据用户创建git仓库 create_project username project_name project项目名，不需要添加git后缀，脚本会自动添加
+# create_project username project_name project
 
 if [ "$#" != 2 ]
 then
@@ -9,13 +9,13 @@ fi
 
 USERNAME=$1
 PROJECT=$2.git
-GIT_CODE=/git_codes
+GIT_CODE=/data
 
 CODE_PATH=$GIT_CODE/$USERNAME/$PROJECT
 
-# 初始化git项目目录
+# create bare repository
 git init --bare $CODE_PATH
 
-# 更改用户权限 其他用户无法访问
+# change access rights
 chown $USERNAME.$USERNAME -R $CODE_PATH
 chmod 700 -R $CODE_PATH

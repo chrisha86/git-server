@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-docker run -itd  -p2022:22 --name git-server qii404/git-server:latest
+docker run -itd  -p2022:22 --name git-server git-server:latest
 ```
 
 ## RUN
@@ -50,5 +50,3 @@ If you want to exec `ssh username@127.0.0.1 -p2022` to login git server, you wil
 > Connection to 127.0.0.1 closed.
 ```
 
--------
-Contact me in [Weibo](https://weibo.com/shiboooo), or [qii404.me](https://qii404.me)

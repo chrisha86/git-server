@@ -1,5 +1,5 @@
 #!/bin/sh
-# 根据用户名密码创建用户，create_user username password 最终创建的是真实的linux用户,该用户无法ssh登陆，创建的项目也只有自己有权限访问
+# create_user username password
 
 if [ "$#" != 2 ]
 then
@@ -9,14 +9,14 @@ fi
 
 USERNAME=$1
 PASSWORD=$2
-GIT_CODE=/git_codes
+GIT_CODE=/data
 
-# 添加用户
+# create user
 # useradd -d "/home/$USERNAME" -m -s '/usr/bin/git-shell' $USERNAME
 adduser -D -h "/home/$USERNAME" -s '/usr/bin/git-shell' $USERNAME
 echo "$USERNAME:$PASSWORD" | chpasswd
 
-# 添加用户目录
+# create git repository
 mkdir -p $GIT_CODE/$USERNAME
 
 chown $USERNAME.$USERNAME -R $GIT_CODE/$USERNAME

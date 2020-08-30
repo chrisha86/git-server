@@ -1,9 +1,9 @@
-FROM alpine:3.7
+FROM alpine:latest
 
 # change to aliyun apk source
-RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main/' > /etc/apk/repositories; \
-    echo 'http://mirrors.aliyun.com/alpine/latest-stable/community/' >> /etc/apk/repositories; \
-    apk update;
+#RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main/' > /etc/apk/repositories; \
+#    echo 'http://mirrors.aliyun.com/alpine/latest-stable/community/' >> /etc/apk/repositories; \
+#    apk update;
 
 # run sshd
 RUN apk add openssh-server;\
@@ -16,7 +16,7 @@ RUN apk add git shadow;
 RUN echo 'You Wanna Login ?? No Way!!' > /etc/motd;
 
 # create git_code root folder
-RUN mkdir /git_codes;
+RUN mkdir /data;
 
 # commands
 COPY create_user create_project /usr/local/bin/
